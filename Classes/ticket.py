@@ -54,8 +54,8 @@ class Ticket:
 
 
 # driver
-date = datetime.now()
-Ticket1 = Ticket("this is bad", "description is short", "1234", "Emergency", "In queue", date)
-print(Ticket1)
-print(Ticket1.__repr__())
-print(Ticket1.__repr__())
+# date = datetime.now()
+# Ticket1 = Ticket("this is bad", "description is short", "1234", "Emergency", "In queue", date)
+# print(Ticket1)
+# print(Ticket1.__repr__())
+# print(Ticket1.__repr__())
