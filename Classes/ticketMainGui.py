@@ -185,11 +185,11 @@ class ViewTicketView:
             self.average_ticket_prio_label.config(text=str(self.average_priority()))
 
     def average_priority(self):
+        global queue
         """
         This calculates the average priority level of the queue
         :return Rounded average of the current queue
         """
-        global modes
         priority_dic = {'Low': 1, 'Medium': 2, 'High': 3, 'Emergency': 4}
         total = 0
         for ticket in queue._ticket_list:
