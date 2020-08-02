@@ -4,6 +4,7 @@ from datetime import datetime
 from tkinter import messagebox
 from tkinter.ttk import *
 from Classes.ticket import Ticket
+from Classes.ticket_database import *
 from Classes.ticket_queue import TicketsQueue
 
 # create the ticket queue to start the program
@@ -12,6 +13,7 @@ queue = TicketsQueue()
 priority = {1: 'Low', 2: 'Medium', 3: 'High', 4: 'Emergency'}
 # a lists of tuples used to display on the view tickets view
 modes = [(1, "Low"), (2, "Medium"), (3, "High"), (4, "Emergency")]
+conn = create_connection("ticketsdb.db")
 
 
 # MAIN Menu View
@@ -104,6 +106,7 @@ class AddTicketView:
             print(ticket.__repr__())
             self.current_ticket_label.config(text='Current Tickets: ' + str(queue.queueSize()))
             self.clear_entries()
+            add_ticket(conn,ticket)
         except ValueError:
             tkinter.messagebox._show('Value Error: Please try again ', "Store ID must be numbers only")
             self.storeId_entry.delete(0, 'end')
@@ -206,7 +209,7 @@ class ViewTicketView:
         # it is called to set the configuration
         def ticket_view():
             var = "There are no Tickets in the QUEUE.\n " \
-                          "Congratulations!!!!!"
+                  "Congratulations!!!!!"
             return var
 
         self.ticketView.config(text=ticket_view())
