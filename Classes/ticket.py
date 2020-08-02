@@ -4,7 +4,6 @@ Author: Paul Ford
 Last date modified: 07/27/2020
 Purpose: Ticket Class
 """
-from datetime import datetime
 
 
 class Ticket:
@@ -20,10 +19,13 @@ class Ticket:
                        in progress, to do, complete, etc
         :param time: The time the ticket was submitted.
         """
-
+        num_characters = set("1234567890")
         self._number = 0
         self._name = name
         self._description = description
+        # Verifying that the ID is only numbers
+        if not (num_characters.issuperset(store_id)):
+            raise ValueError
         self._store_id = store_id
         self._priority = priority
         self._status = status
@@ -53,10 +55,3 @@ class Ticket:
                    "----------------------\n"
                    .format(self._number, self._name, self._description,
                            self._store_id, self._priority, self._status, self._date))
-
-# driver
-# date = datetime.now()
-# Ticket1 = Ticket("this is bad", "description is short", "1234", "Emergency", "In queue", date)
-# print(Ticket1)
-# print(Ticket1.__repr__())
-# print(Ticket1.__repr__())

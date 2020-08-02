@@ -72,9 +72,8 @@ class TicketsQueue:
             self._current_ticket = 0
             return self._ticket_list[self._current_ticket]
         else:
-            var = (self._ticket_list[self._current_ticket + 1])
             self._current_ticket += 1
-            return var
+            return self._ticket_list[self._current_ticket]
 
     def currentTicket(self):
         """
@@ -96,28 +95,3 @@ class TicketsQueue:
             var = (self._ticket_list[self._current_ticket - 1])
             self._current_ticket -= 1
             return var
-
-
-# Driver
- #create tickets
-#date = datetime.now()
-#Ticket1 = Ticket("this is bad", "description is short", "1234", "Emergency", "In queue", date)
-#Ticket2 = Ticket("this is good", "description is short", "1234", "Emergency", "In queue", date)
-#Ticket3 = Ticket("this is great", "description is short", "1234", "Emergency", "In queue", date)
-#tickets = TicketsQueue()
-#tickets.addTicket(Ticket1)
-#tickets.addTicket(Ticket2)
-#tickets.addTicket(Ticket3)
-#tickets.nextTicket()
-#tickets.nextTicket()
-#tickets.nextTicket()
-#tickets.nextTicket()
-#print(tickets.queueSize())
-#tickets.removeTicket()
-#print(tickets.queueSize())
-#tickets.currentTicket()
-#tickets.nextTicket()
-#tickets.nextTicket()
-#tickets.nextTicket()
-#tickets.nextTicket()
-#tickets.emptyQueue()
