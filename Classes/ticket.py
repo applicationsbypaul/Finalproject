@@ -9,6 +9,7 @@ from datetime import datetime
 
 class Ticket:
     """Tickets that will enter the queue and be displayed on the GUI"""
+
     def __init__(self, name, description, store_id, priority, status, time):
         """
         :param name: Name of the ticket the user submits
@@ -19,6 +20,7 @@ class Ticket:
                        in progress, to do, complete, etc
         :param time: The time the ticket was submitted.
         """
+
         self._number = 0
         self._name = name
         self._description = description
@@ -47,11 +49,10 @@ class Ticket:
                    "Store ID: {}\n"
                    "Priority: {}\n"
                    "Status: {}\n"
-                   "Date: {}\n"
+                   "Date Ticket was placed: {}\n"
                    "----------------------\n"
                    .format(self._number, self._name, self._description,
                            self._store_id, self._priority, self._status, self._date))
-
 
 # driver
 # date = datetime.now()

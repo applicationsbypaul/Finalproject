@@ -12,6 +12,12 @@ from Classes.ticket import Ticket
 
 class TicketsQueue:
     def __init__(self):
+        """
+        index of current ticket thats being viewed
+        the number associated with the ticket
+        all the tickets
+
+        """
         self._current_ticket = 0
         self._ticket_number = 0
         self._ticket_list = []
@@ -28,9 +34,8 @@ class TicketsQueue:
         # add the ticket number to the actually ticket
         ticket._number = self._ticket_number
         # create a tuple to represent the position and the ticket
-        ticket_index = (self._ticket_number, ticket)
         # add to list and set isEmpty to False
-        self._ticket_list.append(ticket_index)
+        self._ticket_list.append(ticket)
         self._isEmpty = False
 
     def removeTicket(self):
@@ -40,7 +45,7 @@ class TicketsQueue:
         """
         self._ticket_list.pop(self._current_ticket)
         self._current_ticket = 0
-        if tickets.queueSize() == 0:
+        if self._ticket_list.__len__() == 0:
             self._isEmpty = True
 
     def queueSize(self):
@@ -65,16 +70,17 @@ class TicketsQueue:
         """
         if self._current_ticket == self._ticket_list.__len__() - 1:
             self._current_ticket = 0
-            print(self._ticket_list[self._current_ticket])
+            return self._ticket_list[self._current_ticket]
         else:
-            print(self._ticket_list[self._current_ticket + 1])
+            var = (self._ticket_list[self._current_ticket + 1])
             self._current_ticket += 1
+            return var
 
     def currentTicket(self):
         """
         :return: The current ticket in the queue
         """
-        print(self._ticket_list[self._current_ticket])
+        return self._ticket_list[self._current_ticket]
 
     def previousTicket(self):
         """
@@ -85,30 +91,33 @@ class TicketsQueue:
         """
         if self._current_ticket == 0:
             self._current_ticket = self._ticket_list.__len__() - 1
-            print(self._ticket_list[self._current_ticket])
+            return self._ticket_list[self._current_ticket]
         else:
-            print(self._ticket_list[self._current_ticket - 1])
+            var = (self._ticket_list[self._current_ticket - 1])
             self._current_ticket -= 1
+            return var
+
 
 # Driver
-# create tickets
-# date = datetime.now()
-# Ticket1 = Ticket("this is bad", "description is short", "1234", "Emergency", "In queue", date)
-# Ticket2 = Ticket("this is good", "description is short", "1234", "Emergency", "In queue", date)
-# Ticket3 = Ticket("this is great", "description is short", "1234", "Emergency", "In queue", date)
-# tickets = TicketsQueue()
-# tickets.addTicket(Ticket1)
-# tickets.addTicket(Ticket2)
-# tickets.addTicket(Ticket3)
-# tickets.nextTicket()
-# tickets.nextTicket()
-# tickets.nextTicket()
-# print(tickets.queueSize())
-# tickets.removeTicket()
-# print(tickets.queueSize())
-# tickets.currentTicket()
-# tickets.nextTicket()
-# tickets.nextTicket()
-# tickets.nextTicket()
-# tickets.nextTicket()
-# tickets.emptyQueue()
+ #create tickets
+#date = datetime.now()
+#Ticket1 = Ticket("this is bad", "description is short", "1234", "Emergency", "In queue", date)
+#Ticket2 = Ticket("this is good", "description is short", "1234", "Emergency", "In queue", date)
+#Ticket3 = Ticket("this is great", "description is short", "1234", "Emergency", "In queue", date)
+#tickets = TicketsQueue()
+#tickets.addTicket(Ticket1)
+#tickets.addTicket(Ticket2)
+#tickets.addTicket(Ticket3)
+#tickets.nextTicket()
+#tickets.nextTicket()
+#tickets.nextTicket()
+#tickets.nextTicket()
+#print(tickets.queueSize())
+#tickets.removeTicket()
+#print(tickets.queueSize())
+#tickets.currentTicket()
+#tickets.nextTicket()
+#tickets.nextTicket()
+#tickets.nextTicket()
+#tickets.nextTicket()
+#tickets.emptyQueue()
