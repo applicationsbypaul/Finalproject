@@ -28,11 +28,6 @@ class MyTestCase(unittest.TestCase):
         """
         self.assertEqual(self.ticket._store_id, '1235')
 
-    def test_que_creation(self):
-        pass
-
-
-
 
 if __name__ == '__main__':
     unittest.main()

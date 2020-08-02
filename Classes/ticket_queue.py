@@ -21,7 +21,7 @@ class TicketsQueue:
         self._current_ticket = 0
         self._ticket_number = 0
         self._ticket_list = []
-        self._isEmpty = False
+        self._isEmpty = True
 
     def addTicket(self, ticket):
         """

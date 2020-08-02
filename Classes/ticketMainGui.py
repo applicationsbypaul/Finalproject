@@ -106,7 +106,7 @@ class AddTicketView:
             print(ticket.__repr__())
             self.current_ticket_label.config(text='Current Tickets: ' + str(queue.queueSize()))
             self.clear_entries()
-            add_ticket(conn,ticket)
+            # add_ticket(conn,ticket)
         except ValueError:
             tkinter.messagebox._show('Value Error: Please try again ', "Store ID must be numbers only")
             self.storeId_entry.delete(0, 'end')
