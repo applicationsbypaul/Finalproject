@@ -103,7 +103,6 @@ class AddTicketView:
                             self.prio_entry.get(), self.status_entry.get(),
                             datetime.now().replace(microsecond=0))
             queue.addTicket(ticket)
-            print(ticket.__repr__())
             self.current_ticket_label.config(text='Current Tickets: ' + str(queue.queueSize()))
             self.clear_entries()
 
