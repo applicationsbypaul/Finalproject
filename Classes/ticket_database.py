@@ -1,5 +1,5 @@
 """
-Program: ticket_databse.py
+Program: ticket_database.py
 Author: Paul Ford
 Last date modified: 08/1/2020
 Purpose: creates an a db object
@@ -15,18 +15,21 @@ def create_connection(db):
     :return connection if no error, otherwise None"""
     try:
         conn = sqlite3.connect(db)
-        print(sqlite3.version)
         return conn
     except sqlite3.Error as err:
         print(err)
     return None
 
+
 def create_table(conn):
     sql_create_tickets_table = """ CREATE TABLE IF NOT EXISTS tickets (
                                         id integer PRIMARY KEY,
-                                        name text NOT NULL,
-                                        begin_date text,
-                                        end_date text
+                                        name text,
+                                        description text,
+                                        storeID text,
+                                        priority text,
+                                        status text,
+                                        beginDate text
                                     ); """
     try:
         c = conn.cursor()
@@ -34,30 +37,18 @@ def create_table(conn):
     except sqlite3.Error as e:
         print(e)
 
+
 def add_ticket(conn, ticket):
     """Create a new person for table
     :param conn:
     :param ticket:
     :return: ticket id
     """
-    sql = ''' INSERT INTO tickets(name,description,storeID,priority,status,date)
+    sql = ''' INSERT INTO tickets(id, name,description,storeID,priority,status,beginDate)
               VALUES(?,?,?,?,?,?,?) '''
     cur = conn.cursor()  # cursor object
     cur.execute(sql, ticket)
     return cur.lastrowid  # returns the row id of the cursor object, the ticket id
-
-
-# def create_student(conn, student):
-#   """Create a new person for table
-#    :param conn:
-#   :param student:
-#   :return: student id
-#   """
-#   sql = ''' INSERT INTO student(id, major, begin_date)
-#             VALUES(?,?,?) '''
-#   cur = conn.cursor()  # cursor object
-#   cur.execute(sql, student)
-#   return cur.lastrowid  # returns the row id of the cursor object, the student id
 
 
 def select_all_tickets(conn):
@@ -66,7 +57,7 @@ def select_all_tickets(conn):
     :return:
     """
     cur = conn.cursor()
-    cur.execute("SELECT * FROM ticket")
+    cur.execute("SELECT * FROM tickets")
 
     rows = cur.fetchall()
 
@@ -82,8 +73,3 @@ def delete_ticket(conn, id):
     sql = 'DELETE FROM person WHERE id=?'
     cur = conn.cursor()
     cur.execute(sql, (id,))
-
-
-if __name__ == '__main__':
-    conn = create_connection('ticketsdb.db')
-    create_table(conn)

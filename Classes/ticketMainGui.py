@@ -106,9 +106,10 @@ class AddTicketView:
             print(ticket.__repr__())
             self.current_ticket_label.config(text='Current Tickets: ' + str(queue.queueSize()))
             self.clear_entries()
-            # add_ticket(conn,ticket)
+
         except ValueError:
-            tkinter.messagebox._show('Value Error: Please try again ', "Store ID must be numbers only")
+            tkinter.messagebox._show('Value Error: Please try again ', "Store ID must be numbers only\n"
+                                                                       "Ticket Name must not be Empty")
             self.storeId_entry.delete(0, 'end')
 
     def clear_entries(self):
@@ -202,7 +203,6 @@ class ViewTicketView:
     def empty_queue(self):
         """
         Empty queue
-        :return:
         """
 
         # Example of an inner class.

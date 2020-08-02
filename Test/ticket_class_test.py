@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
     def tearDown(self):
         del self.ticket
 
-    def test_ticket_raise_value_error(self):
+    def test_ticket_raise_value_error_storeID(self):
         """
         creates a bad ticket and checks that the value raised error happens
         """
@@ -27,6 +27,13 @@ class MyTestCase(unittest.TestCase):
         Testing to confirm that the storeID when all numbers is valid
         """
         self.assertEqual(self.ticket._store_id, '1235')
+
+    def test_ticket_raise_value_error_Name(self):
+        """
+        Ticket Name must not be null
+        """
+        with self.assertRaises(ValueError):
+            ticket = Ticket('', 'TicketDescription', 'word', 'Emergency', 'In Queue', date)
 
 
 if __name__ == '__main__':

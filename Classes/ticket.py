@@ -20,12 +20,16 @@ class Ticket:
         :param time: The time the ticket was submitted.
         """
         num_characters = set("1234567890")
-        self._number = 0
-        self._name = name
-        self._description = description
+        # Verifying that name is not null
+        if name.__len__() == 0:
+            raise ValueError
         # Verifying that the ID is only numbers
         if not (num_characters.issuperset(store_id)):
             raise ValueError
+
+        self._number = 0
+        self._name = name
+        self._description = description
         self._store_id = store_id
         self._priority = priority
         self._status = status

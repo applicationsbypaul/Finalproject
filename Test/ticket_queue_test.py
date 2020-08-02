@@ -2,8 +2,6 @@ import unittest
 from datetime import datetime
 
 from Classes.ticket import Ticket
-import tkinter as tk
-from Classes.ticketMainGui import ViewTicketView
 from Classes.ticket_queue import TicketsQueue
 
 # Date for the ticket
